@@ -1,0 +1,37 @@
+# Time in seconds
+# Current in amps
+# position, velocity, and acceleration in device units
+gripper_actuator:
+  actuator_name: 'gripper_joint_actuator'
+  serial_number: '0x602084006486'
+  communication_protocol: 'USB' # RS232 or USB
+  operation_mode: 'profile_position'
+  clear_faults: true
+  torque_constant: 0.025 
+
+  motor:
+    type: 11
+    ec_motor:
+      nominal_current: 2.0
+      max_output_current: 4.0
+      thermal_time_constant: 11.4
+      number_of_pole_pairs: 8
+
+  sensor:
+    type: 3
+    hall_sensor: 
+      inverted_polarity: false
+
+  safety:
+    max_following_error: 200000
+    max_profile_velocity: 4360
+    max_acceleration: 100000
+
+  position_profile:
+    velocity: 1450
+    acceleration: 37500
+    deceleration: 37500
+
+  velocity_profile:
+    acceleration: 37500
+    deceleration: 37500

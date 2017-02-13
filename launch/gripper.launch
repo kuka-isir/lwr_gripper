@@ -1,0 +1,14 @@
+<launch>
+  <group ns="gripper">
+    <param name="robot_description" textfile="$(find epos_hardware)/launch/gripper.urdf" />
+    <node name="epos_hardware" pkg="epos_hardware" type="epos_hardware_node" args="gripper_actuator" output="screen">
+      <rosparam command="load" file="$(find epos_hardware)/launch/gripper.yaml" />
+    </node>
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller position_controller"/>
+    <param name="position_controller/type" value="position_controllers/JointPositionController" />
+    <param name="position_controller/joint" value="gripper_joint" />
+    <param name="joint_state_controller/type" value="joint_state_controller/JointStateController" />
+    <param name="joint_state_controller/publish_rate" value="50" />
+  </group>
+</launch>
