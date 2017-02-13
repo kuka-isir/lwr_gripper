@@ -115,6 +115,7 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  include
 )
 
 ## Declare a C++ library
@@ -128,16 +129,14 @@ include_directories(
 # add_dependencies(lwr_gripper ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(lwr_gripper_node src/lwr_gripper_node.cpp)
+add_executable(gripper_calibration src/gripper_calibration.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(lwr_gripper_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(lwr_gripper_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(gripper_calibration ${catkin_LIBRARIES})
 
 #############
 ## Install ##
