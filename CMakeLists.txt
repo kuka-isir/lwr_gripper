@@ -8,6 +8,10 @@ find_package(catkin REQUIRED COMPONENTS
   epos_hardware
   roscpp
   rospy
+  actionlib
+  actionlib_msgs
+  std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -58,17 +62,17 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
+add_action_files(
+  FILES
+  Gripper.action
+)
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+  actionlib_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -118,25 +122,16 @@ include_directories(
   include
 )
 
-## Declare a C++ library
-# add_library(lwr_gripper
-#   src/${PROJECT_NAME}/lwr_gripper.cpp
-# )
-
-## Add cmake target dependencies of the library
-## as an example, code may need to be generated before libraries
-## either from message generation or dynamic reconfigure
-# add_dependencies(lwr_gripper ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
 ## Declare a C++ executable
 add_executable(gripper_calibration src/gripper_calibration.cpp)
+add_executable(gripper_action_server src/gripper_action_server.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(lwr_gripper_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-## Specify libraries to link a library or executable target against
 target_link_libraries(gripper_calibration ${catkin_LIBRARIES})
+target_link_libraries(gripper_action_server ${catkin_LIBRARIES})
 
 #############
 ## Install ##
