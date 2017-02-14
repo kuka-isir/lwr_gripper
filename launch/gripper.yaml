@@ -4,7 +4,7 @@
 gripper_actuator:
   actuator_name: 'gripper_joint_actuator'
   serial_number: '0x602084006486'
-  communication_protocol: 'USB' # RS232 or USB
+  #communication_protocol: 'USB' # RS232 or USB
   operation_mode: 'profile_position'
   clear_faults: true
   torque_constant: 0.025 
