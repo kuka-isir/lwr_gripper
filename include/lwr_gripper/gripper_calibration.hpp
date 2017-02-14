@@ -7,7 +7,7 @@
 
 void callback(const sensor_msgs::JointState::ConstPtr state);
 
-double alpha_, current_effort_;
+double alpha_, current_effort_, current_position_;
 bool gripper_calibrated_ = false;
 std_msgs::Float64 filtered_val_, current_cmd_;
 
