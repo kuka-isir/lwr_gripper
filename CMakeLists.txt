@@ -5,7 +5,6 @@ project(lwr_gripper)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  epos_hardware
   roscpp
   rospy
   actionlib
@@ -126,9 +125,10 @@ include_directories(
 add_executable(gripper_calibration src/gripper_calibration.cpp)
 add_executable(gripper_action_server src/gripper_action_server.cpp)
 
+
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(lwr_gripper_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(gripper_action_server ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 
 target_link_libraries(gripper_calibration ${catkin_LIBRARIES})
 target_link_libraries(gripper_action_server ${catkin_LIBRARIES})
