@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="USB" default="false"/>
+  <arg name="USB" default="true"/>
   
   <param if="$(arg USB)" name="gripper/epos_hardware/gripper_actuator/communication_protocol" value="USB" />
   <param unless="$(arg USB)" name="gripper/epos_hardware/gripper_actuator/communication_protocol" value="RS232" />
